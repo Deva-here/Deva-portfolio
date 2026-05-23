@@ -1,0 +1,1526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Devanand V — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #E4DDD3;
+  --text: #080D0C;
+  --muted: #576967;
+  --accent: #00A19B;
+  --accent2: #00C4BD;
+  --white: #F4EFEA;
+  --card-bg: #DFD7CC;
+  --border: rgba(8,13,12,0.1);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+  cursor: none;
+}
+
+/* CUSTOM CURSOR */
+.cursor {
+  width: 10px; height: 10px;
+  background: var(--accent);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  transition: transform 0.15s ease, opacity 0.2s;
+  transform: translate(-50%, -50%);
+}
+.cursor-ring {
+  width: 36px; height: 36px;
+  border: 1.5px solid var(--accent);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s, height 0.3s, border-color 0.3s;
+  opacity: 0.5;
+}
+body:has(a:hover) .cursor-ring,
+body:has(button:hover) .cursor-ring {
+  width: 56px; height: 56px;
+  opacity: 0.25;
+}
+
+/* NAV */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 200;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 22px 52px;
+  transition: background 0.3s, backdrop-filter 0.3s;
+}
+nav.scrolled {
+  background: rgba(242,239,233,0.88);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border);
+}
+.logo {
+  font-family: 'Instrument Serif', serif;
+  font-size: 20px;
+  font-style: italic;
+  letter-spacing: -0.3px;
+  color: var(--text);
+  text-decoration: none;
+}
+.logo span { color: var(--accent); }
+nav ul { display: flex; gap: 32px; list-style: none; }
+nav ul li a {
+  text-decoration: none;
+  font-size: 12.5px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  transition: color 0.2s;
+  font-family: 'Syne', sans-serif;
+  text-transform: uppercase;
+}
+nav ul li a:hover { color: var(--text); }
+.nav-hire {
+  background: var(--text) !important;
+  color: var(--white) !important;
+  padding: 9px 20px;
+  border-radius: 100px;
+  transition: background 0.2s !important;
+  letter-spacing: 0.02em !important;
+}
+.nav-hire:hover { background: var(--accent) !important; color: var(--white) !important; }
+
+/* ===================== HERO ===================== */
+.hero-scroll-wrapper {
+  height: 420vh;
+  position: relative;
+}
+.hero-sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.scene {
+  perspective: 1100px;
+  perspective-origin: 50% 50%;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.cards-layer {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+}
+
+/* CENTER TEXT */
+.hero-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 10;
+  pointer-events: none;
+  width: 700px;
+}
+
+.hero-available {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-family: 'Syne', sans-serif;
+  margin-bottom: 22px;
+}
+.avail-dot {
+  width: 7px; height: 7px;
+  background: #22c55e;
+  border-radius: 50%;
+  animation: pulse-green 2s ease-in-out infinite;
+}
+@keyframes pulse-green {
+  0%,100% { box-shadow: 0 0 0 0 rgba(34,197,94,0.5); }
+  50% { box-shadow: 0 0 0 5px rgba(34,197,94,0); }
+}
+
+.hero-name {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(52px, 7vw, 96px);
+  font-weight: 400;
+  letter-spacing: -0.035em;
+  line-height: 1.0;
+  color: var(--text);
+}
+
+/* ROTATING TITLE */
+.hero-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 10px;
+  height: 56px;
+  overflow: hidden;
+}
+.title-prefix {
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(16px, 2vw, 22px);
+  font-weight: 300;
+  color: var(--muted);
+  font-style: italic;
+  flex-shrink: 0;
+}
+.rotating-title-wrap {
+  position: relative;
+  height: 56px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.rotating-title {
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.7s cubic-bezier(0.77, 0, 0.175, 1);
+}
+.title-item {
+  height: 56px;
+  display: flex;
+  align-items: center;
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(26px, 3.2vw, 46px);
+  font-style: italic;
+  font-weight: 400;
+  white-space: nowrap;
+  /* Outline text style — like the "exclusive" italic */
+  -webkit-text-stroke: 1.5px var(--orange);
+  color: transparent;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+/* Active title fills in */
+.title-item.active {
+  -webkit-text-stroke: 0px;
+  color: var(--accent);
+  text-shadow: 0 0 40px rgba(0,161,155,0.25);
+}
+
+.hero-sub {
+  margin-top: 24px;
+  font-size: 15px;
+  color: var(--muted);
+  font-weight: 300;
+  line-height: 1.65;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.hero-actions {
+  margin-top: 36px;
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  pointer-events: all;
+}
+.btn-primary {
+  background: var(--text);
+  color: var(--white);
+  padding: 13px 28px;
+  border-radius: 100px;
+  border: none;
+  font-family: 'Syne', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: none;
+  transition: background 0.2s, transform 0.15s;
+}
+.btn-primary:hover {  transform: scale(1.02); }
+.btn-secondary {
+  background: transparent;
+  color: var(--text);
+  padding: 13px 28px;
+  border-radius: 100px;
+  border: 1.5px solid var(--border);
+  font-family: 'Syne', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: none;
+  transition: border-color 0.2s, transform 0.15s;
+}
+.btn-secondary:hover { background: var(--accent); border-color: var(--text); transform: scale(1.02); }
+
+/* SCROLL HINT */
+.scroll-hint {
+  position: absolute;
+  bottom: 32px; left: 50%;
+  transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  z-index: 20;
+  transition: opacity 0.4s;
+}
+.scroll-hint span {
+  font-size: 10px; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--muted);
+  font-family: 'Syne', sans-serif; font-weight: 500;
+}
+.scroll-arrow {
+  width: 28px; height: 28px;
+  border: 1.5px solid rgba(20,18,16,0.2);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  animation: bob 1.8s ease-in-out infinite;
+}
+@keyframes bob {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(5px); }
+}
+
+/* CARDS */
+.card {
+  position: absolute;
+  top: 50%; left: 50%;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.14);
+  will-change: transform, opacity;
+  transform-origin: center center;
+}
+.card-visual {
+  width: 100%; height: calc(100% - 34px);
+  display: flex; align-items: center; justify-content: center;
+  position: relative;
+}
+.card-label {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 24px 14px 12px;
+  background: linear-gradient(transparent, rgba(0,0,0,0.55));
+  color: white;
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-align: center;
+  font-family: 'Syne', sans-serif;
+  text-transform: uppercase;
+}
+
+.card-1  { width: 155px; height: 185px; }
+.card-2  { width: 140px; height: 165px; }
+.card-3  { width: 150px; height: 180px; }
+.card-4  { width: 175px; height: 148px; }
+.card-5  { width: 148px; height: 178px; }
+.card-6  { width: 145px; height: 168px; }
+.card-7  { width: 158px; height: 148px; }
+.card-8  { width: 135px; height: 158px; }
+.card-9  { width: 140px; height: 162px; }
+
+.grad-mint   { background: linear-gradient(135deg, #00A19B, #00C4BD); }
+.grad-dark   { background: linear-gradient(135deg, #101615, #1F2A28); }
+.grad-warm   { background: linear-gradient(135deg, #C2B7A8, #D8CEBE); }
+.grad-slate  { background: linear-gradient(135deg, #374745, #536A67); }
+.grad-rust   { background: linear-gradient(135deg, #007672, #00A19B); }
+.grad-stone  { background: linear-gradient(135deg, #748B89, #95B0AE); }
+.grad-cream  { background: linear-gradient(135deg, #E4DDD3, #F4EFEA); }
+
+/* ===================== ABOUT ===================== */
+.about-section {
+  padding: 140px 52px 100px;
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+.about-left .section-tag {
+  font-family: 'Syne', sans-serif;
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 20px;
+}
+.about-left h2 {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(36px, 4vw, 60px);
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  line-height: 1.08;
+  margin-bottom: 28px;
+}
+.about-left h2 em { font-style: italic; color: var(--accent); }
+.about-left p {
+  font-size: 15px;
+  color: var(--muted);
+  line-height: 1.75;
+  font-weight: 300;
+  max-width: 440px;
+}
+.about-left p + p { margin-top: 16px; }
+
+.about-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  margin-top: 48px;
+}
+.stat-box {
+  background: var(--white);
+  padding: 28px 24px;
+  border-radius: 3px;
+}
+.stat-box:first-child { border-radius: 16px 3px 3px 3px; }
+.stat-box:nth-child(2) { border-radius: 3px 16px 3px 3px; }
+.stat-box:nth-child(3) { border-radius: 3px 3px 3px 16px; }
+.stat-box:last-child { border-radius: 3px 3px 16px 3px; }
+.stat-num {
+  font-family: 'Instrument Serif', serif;
+  font-size: 42px;
+  font-style: italic;
+  color: var(--accent);
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+.stat-label {
+  font-size: 12px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-top: 6px;
+  font-family: 'Syne', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* Skills column */
+.about-right { padding-top: 20px; }
+.skills-group { margin-bottom: 36px; }
+.skills-group h4 {
+  font-family: 'Syne', sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 14px;
+}
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.skill-tag {
+  font-size: 12.5px;
+  font-weight: 500;
+  padding: 7px 16px;
+  border-radius: 100px;
+  background: var(--white);
+  color: var(--text);
+  border: 1px solid var(--border);
+  font-family: 'DM Sans', sans-serif;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+.skill-tag:hover { background: var(--accent); color: var(--white); border-color: var(--accent); }
+.skill-tag.highlight { background: var(--accent); color: var(--white); border-color: var(--accent); }
+
+/* ===================== PROJECTS ===================== */
+.projects-section {
+  padding: 80px 52px 120px;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 56px;
+}
+.section-header-left .section-tag {
+  font-family: 'Syne', sans-serif;
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+.section-header-left h2 {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(34px, 3.5vw, 54px);
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+}
+.section-header-left h2 em { font-style: italic; }
+.view-all {
+  font-family: 'Syne', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-decoration: none;
+  display: flex; align-items: center; gap: 8px;
+  padding-bottom: 2px;
+  border-bottom: 1px solid var(--border);
+  transition: color 0.2s, border-color 0.2s;
+}
+.view-all:hover { color: var(--accent); border-color: var(--accent); }
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.project-card {
+  background: var(--white);
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.3s;
+  cursor: none;
+}
+.project-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 60px rgba(0,0,0,0.1);
+}
+.project-card.featured {
+  grid-column: span 2;
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+}
+
+.project-thumb {
+  aspect-ratio: 16/10;
+  overflow: hidden;
+  position: relative;
+}
+.project-card.featured .project-thumb {
+  aspect-ratio: auto;
+  min-height: 300px;
+}
+.project-thumb-inner {
+  width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  position: relative;
+  transition: transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+.project-card:hover .project-thumb-inner { transform: scale(1.04); }
+
+/* Placeholder thumbnail gradients */
+.thumb-mcp    { background: linear-gradient(135deg, #1a1816 0%, #2d2a25 60%, #3d2210 100%); }
+.thumb-cyber  { background: linear-gradient(135deg, #0d1117 0%, #1a2235 60%, #0d2040 100%); }
+.thumb-web    { background: linear-gradient(135deg, #1c1814 0%, #2e2420 60%, #E8521A22 100%); }
+.thumb-other  { background: linear-gradient(135deg, #181614 0%, #2a2520 100%); }
+
+.project-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  transition: transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+.project-card:hover .project-img { transform: scale(1.04); }
+
+.thumb-label {
+  position: absolute;
+  bottom: 16px; left: 16px;
+  background: rgba(0,161,155,0.15);
+  border: 1px solid rgba(0,161,155,0.3);
+  color: var(--accent);
+  font-size: 10px;
+  font-family: 'Syne', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border-radius: 100px;
+}
+
+.project-info {
+  padding: 28px 28px 32px;
+}
+.project-card.featured .project-info {
+  padding: 40px 40px 40px 36px;
+  display: flex; flex-direction: column; justify-content: center;
+}
+.project-tags {
+  display: flex; flex-wrap: wrap; gap: 6px;
+  margin-bottom: 14px;
+}
+.project-tag {
+  font-size: 10px;
+  font-family: 'Syne', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: 4px 10px;
+  background: var(--bg);
+  border-radius: 100px;
+  border: 1px solid var(--border);
+}
+.project-info h3 {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(20px, 2vw, 28px);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  margin-bottom: 12px;
+}
+.project-info p {
+  font-size: 13.5px;
+  color: var(--muted);
+  line-height: 1.65;
+  font-weight: 300;
+}
+.project-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 22px;
+  font-family: 'Syne', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  text-decoration: none;
+  transition: gap 0.2s;
+}
+.project-link:hover { gap: 14px; }
+
+/* SVG icons in thumbs */
+.thumb-icon { filter: drop-shadow(0 4px 16px rgba(0,161,155,0.4)); }
+
+/* ===================== EXPERIENCE ===================== */
+.exp-section {
+  background: var(--text);
+  color: var(--white);
+  padding: 100px 52px;
+}
+.exp-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+.exp-inner .section-tag {
+  font-family: 'Syne', sans-serif;
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+.exp-inner h2 {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(34px, 3.5vw, 54px);
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  margin-bottom: 60px;
+}
+.exp-inner h2 em { font-style: italic; }
+
+.exp-list { display: flex; flex-direction: column; gap: 2px; }
+.exp-item {
+  display: grid;
+  grid-template-columns: 220px 1fr auto;
+  align-items: center;
+  gap: 40px;
+  padding: 28px 32px;
+  background: rgba(255,255,255,0.04);
+  border-radius: 4px;
+  transition: background 0.2s;
+  border: 1px solid rgba(255,255,255,0.04);
+}
+.exp-item:first-child { border-radius: 16px 16px 4px 4px; }
+.exp-item:last-child  { border-radius: 4px 4px 16px 16px; }
+.exp-item:hover { background: rgba(255,255,255,0.07); }
+.exp-period {
+  font-family: 'Syne', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: rgba(255,255,255,0.35);
+  text-transform: uppercase;
+}
+.exp-content h4 {
+  font-family: 'Instrument Serif', serif;
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: -0.015em;
+  color: var(--white);
+  margin-bottom: 4px;
+}
+.exp-content span {
+  font-size: 13px;
+  color: rgba(255,255,255,0.45);
+  font-weight: 300;
+}
+.exp-badge {
+  font-family: 'Syne', sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  border-radius: 100px;
+  border: 1px solid rgba(0,161,155,0.4);
+  color: var(--accent);
+}
+
+/* ===================== ACHIEVEMENTS ===================== */
+.achieve-section {
+  padding: 100px 52px;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+.achieve-section .section-tag {
+  font-family: 'Syne', sans-serif;
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 14px;
+}
+.achieve-section h2 {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(34px, 3.5vw, 54px);
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  margin-bottom: 52px;
+}
+.achieve-section h2 em { font-style: italic; }
+
+.achieve-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.achieve-card {
+  background: var(--white);
+  border-radius: 16px;
+  padding: 32px 28px;
+  border: 1px solid var(--border);
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+.achieve-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.08); }
+.achieve-icon {
+  width: 44px; height: 44px;
+  background: rgba(0,161,155,0.1);
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+.achieve-card h4 {
+  font-family: 'Instrument Serif', serif;
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: -0.015em;
+  margin-bottom: 8px;
+}
+.achieve-card p {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.6;
+  font-weight: 300;
+}
+
+/* ===================== CONTACT ===================== */
+.contact-section {
+  background: var(--text);
+  padding: 100px 52px 80px;
+}
+.contact-inner {
+  max-width: 860px;
+  margin: 0 auto;
+  text-align: center;
+}
+.contact-inner .section-tag {
+  font-family: 'Syne', sans-serif;
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 20px;
+}
+.contact-inner h2 {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(42px, 6vw, 80px);
+  font-weight: 400;
+  letter-spacing: -0.035em;
+  line-height: 1.05;
+  color: var(--white);
+  margin-bottom: 18px;
+}
+.contact-inner h2 em { font-style: italic; color: var(--accent); }
+.contact-inner p {
+  font-size: 15px;
+  color: rgba(255,255,255,0.45);
+  font-weight: 300;
+  line-height: 1.65;
+  margin-bottom: 44px;
+  max-width: 480px;
+  margin-left: auto; margin-right: auto;
+}
+.contact-links {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 70px;
+}
+.contact-link {
+  display: flex; align-items: center; gap: 9px;
+  padding: 13px 24px;
+  border-radius: 100px;
+  text-decoration: none;
+  font-family: 'Syne', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: transform 0.2s, background 0.2s;
+}
+.contact-link:hover { transform: scale(1.04); }
+.contact-link.primary { background: var(--accent); color: var(--white); }
+.contact-link.secondary { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.7); border: 1px solid rgba(255,255,255,0.12); }
+.contact-link.secondary:hover { background: rgba(255,255,255,0.14); color: var(--white); }
+
+footer {
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding: 28px 52px;
+  background: var(--text);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+footer .logo { color: var(--white); }
+footer p {
+  font-size: 12px;
+  color: rgba(255,255,255,0.3);
+  font-family: 'Syne', sans-serif;
+}
+
+/* GRAIN OVERLAY */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-size: 128px;
+}
+
+/* Scroll-reveal for sections */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+
+/* ACCESSIBILITY & GRACEFUL DEGRADATION */
+@media (prefers-reduced-motion: reduce) {
+  .hero-scroll-wrapper { height: auto; min-height: 100vh; padding: 120px 20px; }
+  .hero-sticky { position: static; height: auto; display: block; overflow: visible; }
+  .hero-center { position: relative; top: 0; left: 0; transform: none; width: 100%; margin: 0 auto 60px; }
+  .cards-layer { position: static; display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; transform: none !important; }
+  .card { position: static; transform: none !important; opacity: 1 !important; margin: 0; }
+  .scroll-hint { display: none; }
+}
+</style>
+<noscript>
+  <style>
+    .hero-scroll-wrapper { height: auto; padding: 120px 20px; }
+    .hero-sticky { position: static; height: auto; }
+    .hero-center { position: relative; top: 0; left: 0; transform: none; width: 100%; margin: 0 auto 60px; }
+    .cards-layer { position: static; display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
+    .card { position: static; opacity: 1 !important; transform: none !important; margin: 0; }
+    .reveal { opacity: 1; transform: none; }
+  </style>
+</noscript>
+</head>
+<body>
+
+<!-- CURSOR -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <a href="#" class="logo">Deva<span>.dev</span></a>
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Work</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#contact" class="nav-hire">Hire Me</a></li>
+  </ul>
+</nav>
+
+<!-- ========== HERO ========== -->
+<div class="hero-scroll-wrapper" id="heroWrapper">
+  <div class="hero-sticky">
+    <div class="scene" id="scene">
+
+      <div class="cards-layer" id="cardsLayer">
+
+        <!-- Card 1: MCP Server / Python -->
+        <div class="card card-1" data-depth="2.8" data-x="-28" data-y="-25" data-rz="-12">
+          <div class="card-visual grad-dark">
+            <svg width="80" height="80" viewBox="0 0 80 80" fill="none" class="thumb-icon">
+              <rect x="10" y="18" width="60" height="44" rx="6" fill="rgba(0,161,155,0.15)" stroke="rgba(0,161,155,0.4)" stroke-width="1.5"/>
+              <circle cx="22" cy="30" r="4" fill="#00A19B" opacity="0.8"/>
+              <circle cx="34" cy="30" r="4" fill="#00C4BD" opacity="0.8"/>
+              <circle cx="46" cy="30" r="4" fill="rgba(255,255,255,0.2)"/>
+              <rect x="18" y="40" width="24" height="2.5" rx="1.25" fill="rgba(0,161,155,0.7)"/>
+              <rect x="18" y="48" width="36" height="2.5" rx="1.25" fill="rgba(255,255,255,0.25)"/>
+              <rect x="18" y="56" width="28" height="2.5" rx="1.25" fill="rgba(255,255,255,0.15)"/>
+            </svg>
+          </div>
+          <div class="card-label">MCP Server</div>
+        </div>
+
+        <!-- Card 2: React/JS component -->
+        <div class="card card-2" data-depth="1.8" data-x="-12" data-y="-12" data-rz="-4">
+          <div class="card-visual grad-rust">
+            <svg width="70" height="70" viewBox="0 0 70 70" fill="none" class="thumb-icon">
+              <circle cx="35" cy="35" r="6" fill="rgba(255,255,255,0.9)"/>
+              <ellipse cx="35" cy="35" rx="28" ry="10" stroke="rgba(255,255,255,0.6)" stroke-width="2" fill="none"/>
+              <ellipse cx="35" cy="35" rx="28" ry="10" stroke="rgba(255,255,255,0.6)" stroke-width="2" fill="none" transform="rotate(60 35 35)"/>
+              <ellipse cx="35" cy="35" rx="28" ry="10" stroke="rgba(255,255,255,0.6)" stroke-width="2" fill="none" transform="rotate(120 35 35)"/>
+            </svg>
+          </div>
+          <div class="card-label">React / JS</div>
+        </div>
+
+        <!-- Card 3: Full Stack -->
+        <div class="card card-3" data-depth="3.2" data-x="6" data-y="-30" data-rz="10">
+          <div class="card-visual grad-mint">
+            <svg width="75" height="88" viewBox="0 0 75 88" fill="none" class="thumb-icon">
+              <rect x="8" y="8" width="59" height="72" rx="8" fill="rgba(0,0,0,0.2)" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+              <path d="M22 32 L32 44 L22 56" stroke="rgba(255,255,255,0.9)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+              <line x1="35" y1="56" x2="53" y2="56" stroke="rgba(255,255,255,0.6)" stroke-width="2.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="card-label">Full Stack</div>
+        </div>
+
+        <!-- Card 4: Continuous monitoring / chart -->
+        <div class="card card-4" data-depth="2.2" data-x="32" data-y="-20" data-rz="12">
+          <div class="card-visual grad-slate">
+            <svg width="155" height="88" viewBox="0 0 155 88" fill="none">
+              <text x="10" y="14" fill="rgba(255,255,255,0.4)" font-size="8" font-family="monospace">Performance</text>
+              <line x1="10" y1="30" x2="145" y2="30" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+              <line x1="10" y1="48" x2="145" y2="48" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+              <line x1="10" y1="66" x2="145" y2="66" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+              <path d="M10 65 L28 55 L44 58 L58 44 L72 50 L86 36 L100 42 L114 30 L128 35 L145 24"
+                stroke="#00A19B" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M10 65 L28 55 L44 58 L58 44 L72 50 L86 36 L100 42 L114 30 L128 35 L145 24 L145 78 L10 78 Z"
+                fill="url(#rGrad)" opacity="0.2"/>
+              <defs>
+                <linearGradient id="rGrad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#00A19B"/>
+                  <stop offset="100%" stop-color="#00A19B" stop-opacity="0"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+          <div class="card-label">REST API</div>
+        </div>
+
+        <!-- Card 5: Database / MySQL -->
+        <div class="card card-5" data-depth="2.5" data-x="-35" data-y="5" data-rz="0">
+          <div class="card-visual grad-dark">
+            <svg width="70" height="80" viewBox="0 0 70 80" fill="none" class="thumb-icon">
+              <ellipse cx="35" cy="18" rx="22" ry="8" fill="rgba(0,161,155,0.3)" stroke="rgba(0,161,155,0.6)" stroke-width="1.5"/>
+              <path d="M13 18 L13 38" stroke="rgba(0,161,155,0.5)" stroke-width="1.5"/>
+              <path d="M57 18 L57 38" stroke="rgba(0,161,155,0.5)" stroke-width="1.5"/>
+              <ellipse cx="35" cy="38" rx="22" ry="8" fill="rgba(0,161,155,0.15)" stroke="rgba(0,161,155,0.4)" stroke-width="1.5"/>
+              <path d="M13 38 L13 58" stroke="rgba(0,161,155,0.3)" stroke-width="1.5"/>
+              <path d="M57 38 L57 58" stroke="rgba(0,161,155,0.3)" stroke-width="1.5"/>
+              <ellipse cx="35" cy="58" rx="22" ry="8" fill="rgba(0,161,155,0.08)" stroke="rgba(0,161,155,0.25)" stroke-width="1.5"/>
+            </svg>
+          </div>
+          <div class="card-label">MySQL / DB</div>
+        </div>
+
+        <!-- Card 6: Hackathon / Award -->
+        <div class="card card-6" data-depth="2.0" data-x="35" data-y="4" data-rz="0">
+          <div class="card-visual grad-mint">
+            <svg width="70" height="85" viewBox="0 0 70 85" fill="none" class="thumb-icon">
+              <polygon points="35,8 42,26 62,26 47,38 53,56 35,45 17,56 23,38 8,26 28,26" fill="rgba(255,255,255,0.25)" stroke="rgba(255,255,255,0.7)" stroke-width="1.5" stroke-linejoin="round"/>
+              <circle cx="35" cy="35" r="8" fill="rgba(255,255,255,0.4)"/>
+              <rect x="28" y="56" width="14" height="22" rx="3" fill="rgba(0,0,0,0.3)"/>
+              <rect x="22" y="74" width="26" height="5" rx="2.5" fill="rgba(0,0,0,0.3)"/>
+            </svg>
+          </div>
+          <div class="card-label">Award</div>
+        </div>
+
+        <!-- Card 7: Linux / DevTools -->
+        <div class="card card-7" data-depth="1.5" data-x="-28" data-y="28" data-rz="-15">
+          <div class="card-visual grad-stone">
+            <svg width="110" height="80" viewBox="0 0 110 80" fill="none">
+              <rect x="8" y="8" width="94" height="64" rx="6" fill="rgba(0,0,0,0.3)" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+              <circle cx="22" cy="20" r="3.5" fill="#00A19B" opacity="0.7"/>
+              <circle cx="32" cy="20" r="3.5" fill="#00C4BD" opacity="0.7"/>
+              <circle cx="42" cy="20" r="3.5" fill="rgba(255,255,255,0.2)"/>
+              <text x="14" y="42" fill="rgba(0,161,155,0.9)" font-size="9" font-family="monospace">$ git push origin</text>
+              <text x="14" y="55" fill="rgba(255,255,255,0.3)" font-size="9" font-family="monospace">→ main ✓</text>
+            </svg>
+          </div>
+          <div class="card-label">Git / Linux</div>
+        </div>
+
+        <!-- Card 8: Java / Spring Boot -->
+        <div class="card card-8" data-depth="2.1" data-x="2" data-y="32" data-rz="0">
+          <div class="card-visual grad-rust">
+            <svg width="65" height="78" viewBox="0 0 65 78" fill="none" class="thumb-icon">
+              <path d="M32 8 C20 18 14 30 20 40 C26 50 20 58 32 68" stroke="rgba(255,255,255,0.7)" stroke-width="3" fill="none" stroke-linecap="round"/>
+              <path d="M40 14 C28 24 22 36 28 46 C34 56 28 60 40 68" stroke="rgba(255,255,255,0.4)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+              <circle cx="32" cy="38" r="5" fill="rgba(255,255,255,0.6)"/>
+            </svg>
+          </div>
+          <div class="card-label">Java / Spring</div>
+        </div>
+
+        <!-- Card 9: Flask / Python -->
+        <div class="card card-9" data-depth="2.6" data-x="25" data-y="22" data-rz="6">
+          <div class="card-visual grad-dark">
+            <svg width="68" height="80" viewBox="0 0 68 80" fill="none" class="thumb-icon">
+              <path d="M34 8 L34 28" stroke="rgba(255,255,255,0.4)" stroke-width="2" stroke-linecap="round"/>
+              <path d="M22 28 L46 28" stroke="rgba(255,255,255,0.4)" stroke-width="2" stroke-linecap="round"/>
+              <path d="M22 28 Q16 40 14 52 Q12 62 34 68 Q56 62 54 52 Q52 40 46 28" fill="rgba(0,161,155,0.2)" stroke="rgba(0,161,155,0.6)" stroke-width="1.5"/>
+              <circle cx="28" cy="50" r="3" fill="rgba(0,161,155,0.7)"/>
+              <circle cx="40" cy="54" r="2" fill="rgba(0,161,155,0.5)"/>
+              <circle cx="34" cy="44" r="2.5" fill="rgba(0,161,155,0.6)"/>
+            </svg>
+          </div>
+          <div class="card-label">Flask / Python</div>
+        </div>
+
+      </div><!-- /cards-layer -->
+
+      <!-- CENTER -->
+      <div class="hero-center" id="heroCenter">
+        <div class="hero-available"><div class="avail-dot"></div>Available for Freelance &amp; Internships</div>
+        <div class="hero-name">Devanand V</div>
+
+        <div class="hero-title-row">
+          <span class="title-prefix">I'm a</span>
+          <div class="rotating-title-wrap">
+            <div class="rotating-title" id="rotatingTitle">
+              <span class="title-item active">Full Stack Developer</span>
+              <span class="title-item">Web Designer</span>
+              <span class="title-item">Graphics Designer</span>
+              <span class="title-item">Problem Solver</span>
+            </div>
+          </div>
+        </div>
+
+        <p class="hero-sub">CS undergrad crafting beautiful, functional web experiences. From REST APIs to pixel-perfect UIs.</p>
+        <div class="hero-actions">
+          <button class="btn-primary" onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'})">View My Work</button>
+          <button class="btn-secondary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Get In Touch</button>
+        </div>
+      </div>
+
+      <div class="scroll-hint" id="scrollHint">
+        <span>Scroll</span>
+        <div class="scroll-arrow">
+          <svg width="10" height="7" viewBox="0 0 10 7" fill="none">
+            <path d="M1 1L5 5L9 1" stroke="#7a746c" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+      </div>
+
+    </div><!-- /scene -->
+  </div>
+</div>
+
+<!-- ========== ABOUT ========== -->
+<section id="about" class="about-section">
+  <div class="about-left reveal">
+    <p class="section-tag">About Me</p>
+    <h2>Building for the <em>web</em> with purpose</h2>
+    <p>I'm a Computer Science undergraduate at Vel Tech, Chennai, passionate about building things that live on the internet. My work sits at the intersection of clean engineering and thoughtful design.</p>
+    <p>With hands-on internships, hackathon wins, and real projects under my belt, I bring both technical depth and a product mindset to every collaboration.</p>
+
+    <div class="about-stats">
+      <div class="stat-box">
+        <div class="stat-num">8.4</div>
+        <div class="stat-label">CGPA</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">2+</div>
+        <div class="stat-label">Internships</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">2</div>
+        <div class="stat-label">Awards Won</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">100+</div>
+        <div class="stat-label">Users Served</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="about-right reveal reveal-delay-2">
+    <div class="skills-group">
+      <h4>Languages</h4>
+      <div class="skill-tags">
+        <span class="skill-tag highlight">Java</span>
+        <span class="skill-tag highlight">Python</span>
+        <span class="skill-tag">JavaScript</span>
+        <span class="skill-tag">HTML5</span>
+        <span class="skill-tag">CSS3</span>
+      </div>
+    </div>
+    <div class="skills-group">
+      <h4>Frameworks & Tools</h4>
+      <div class="skill-tags">
+        <span class="skill-tag">Flask</span>
+        <span class="skill-tag">Spring Boot</span>
+        <span class="skill-tag">Bootstrap</span>
+        <span class="skill-tag">JDBC</span>
+        <span class="skill-tag">REST API</span>
+        <span class="skill-tag">MCP</span>
+      </div>
+    </div>
+    <div class="skills-group">
+      <h4>Dev Tools</h4>
+      <div class="skill-tags">
+        <span class="skill-tag">Git</span>
+        <span class="skill-tag">GitHub</span>
+        <span class="skill-tag">Linux</span>
+        <span class="skill-tag">MySQL</span>
+        <span class="skill-tag">SAP ERP</span>
+      </div>
+    </div>
+    <div class="skills-group">
+      <h4>Design</h4>
+      <div class="skill-tags">
+        <span class="skill-tag">UI/UX Design</span>
+        <span class="skill-tag">Graphics Design</span>
+        <span class="skill-tag">Responsive Design</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== PROJECTS ========== -->
+<section id="projects" style="background: var(--white); padding: 0 0 20px;">
+<div class="projects-section">
+  <div class="section-header reveal">
+    <div class="section-header-left">
+      <p class="section-tag">Selected Work</p>
+      <h2>Projects I've <em>built</em></h2>
+    </div>
+    <a href="https://github.com/Deva-here" target="_blank" class="view-all">
+      View All on GitHub
+      <svg width="14" height="10" viewBox="0 0 14 10" fill="none">
+        <path d="M9 1L13 5L9 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <line x1="1" y1="5" x2="13" y2="5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+    </a>
+  </div>
+
+  <div class="projects-grid reveal reveal-delay-1">
+
+    <!-- Featured Project 1: CyberSentinel -->
+    <div class="project-card featured">
+      <div class="project-thumb">
+        <div class="project-thumb-inner thumb-cyber">
+          <img src="assets/cybersentinel.png" alt="CyberSentinel" class="project-img" onerror="this.style.display='none';">
+          <svg width="120" height="120" viewBox="0 0 90 90" fill="none" style="filter:drop-shadow(0 8px 32px rgba(96,165,250,0.4)); position:absolute; z-index:1;">
+            <polygon points="45,10 78,30 78,60 45,80 12,60 12,30" fill="rgba(96,165,250,0.1)" stroke="rgba(96,165,250,0.5)" stroke-width="1.5"/>
+            <polygon points="45,22 68,35 68,55 45,68 22,55 22,35" fill="rgba(96,165,250,0.08)" stroke="rgba(96,165,250,0.3)" stroke-width="1"/>
+            <circle cx="45" cy="45" r="10" fill="rgba(96,165,250,0.2)" stroke="rgba(96,165,250,0.6)" stroke-width="1.5"/>
+            <circle cx="45" cy="45" r="4" fill="#60a5fa"/>
+          </svg>
+          <div class="thumb-label" style="z-index: 10;">Featured</div>
+        </div>
+      </div>
+      <div class="project-info">
+        <div class="project-tags">
+          <span class="project-tag">HTML5</span>
+          <span class="project-tag">CSS3</span>
+          <span class="project-tag">JavaScript</span>
+        </div>
+        <h3>CyberSentinel — College Symposium Portal</h3>
+        <p>Official event portal for college symposium. Handled 100+ participants with focus on cross-device responsiveness and performance optimization.</p>
+        <a href="https://cybersentinel.in" target="_blank" class="project-link">
+          View Project
+          <svg width="14" height="10" viewBox="0 0 14 10" fill="none">
+            <path d="M9 1L13 5L9 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <line x1="1" y1="5" x2="13" y2="5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Project 2: Brownie Cult -->
+    <div class="project-card">
+      <div class="project-thumb">
+        <div class="project-thumb-inner thumb-other" style="background: linear-gradient(135deg, #2b160a 0%, #170b04 100%);">
+          <img src="assets/brownie-cult.png" alt="Brownie Cult" class="project-img" onerror="this.style.display='none';">
+          <svg width="88" height="88" viewBox="0 0 88 88" fill="none" style="filter:drop-shadow(0 4px 20px rgba(181,114,80,0.4)); position:absolute; z-index:1;">
+            <circle cx="44" cy="44" r="30" fill="rgba(181,114,80,0.1)" stroke="rgba(181,114,80,0.4)" stroke-width="1.5"/>
+            <path d="M34 50 Q 44 60 54 50" stroke="rgba(181,114,80,0.6)" stroke-width="2" fill="none"/>
+          </svg>
+        </div>
+      </div>
+      <div class="project-info">
+        <div class="project-tags">
+          <span class="project-tag">UI/UX</span>
+          <span class="project-tag">Web Design</span>
+        </div>
+        <h3>Brownie Cult</h3>
+        <p>An aesthetically pleasing e-commerce landing page crafted for handcrafted brownies and cakes, featuring rich, immersive visual styling.</p>
+        <a href="https://browniecult.netlify.app" target="_blank" class="project-link">
+          View Live Demo
+          <svg width="14" height="10" viewBox="0 0 14 10" fill="none">
+            <path d="M9 1L13 5L9 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <line x1="1" y1="5" x2="13" y2="5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Project 3: Shades Landing Page -->
+    <div class="project-card">
+      <div class="project-thumb">
+        <div class="project-thumb-inner thumb-web" style="background: linear-gradient(135deg, #f4f7f8 0%, #e0e7ea 100%);">
+          <img src="assets/shades-landing-page.png" alt="Shades Landing Page" class="project-img" onerror="this.style.display='none';">
+          <svg width="88" height="88" viewBox="0 0 88 88" fill="none" style="filter:drop-shadow(0 4px 20px rgba(0,161,155,0.2)); position:absolute; z-index:1;">
+            <rect x="14" y="24" width="60" height="40" rx="4" fill="rgba(0,161,155,0.1)" stroke="rgba(0,161,155,0.3)" stroke-width="1.5"/>
+            <rect x="22" y="32" width="20" height="4" rx="2" fill="rgba(0,161,155,0.4)"/>
+            <rect x="22" y="42" width="44" height="2" rx="1" fill="rgba(0,161,155,0.2)"/>
+            <rect x="22" y="48" width="30" height="2" rx="1" fill="rgba(0,161,155,0.2)"/>
+          </svg>
+        </div>
+      </div>
+      <div class="project-info">
+        <div class="project-tags">
+          <span class="project-tag">Frontend</span>
+          <span class="project-tag">Landing Page</span>
+        </div>
+        <h3>Shades — Support Platform</h3>
+        <p>Custom landing page UI for a live chat support application featuring clean typography, 3D illustrations, and modern layout techniques.</p>
+        <a href="https://deva-here.github.io" target="_blank" class="project-link">
+          View Project
+          <svg width="14" height="10" viewBox="0 0 14 10" fill="none">
+            <path d="M9 1L13 5L9 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <line x1="1" y1="5" x2="13" y2="5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Project 4: Game Vault / Store Clone -->
+    <div class="project-card">
+      <div class="project-thumb">
+        <div class="project-thumb-inner thumb-mcp" style="background: linear-gradient(135deg, #1e1e1e 0%, #121212 100%);">
+          <img src="assets/steamunlocked-frontend.png" alt="Game Library Clone" class="project-img" onerror="this.style.display='none';">
+          <svg width="88" height="88" viewBox="0 0 88 88" fill="none" style="filter:drop-shadow(0 4px 20px rgba(255,80,80,0.3)); position:absolute; z-index:1;">
+            <rect x="20" y="20" width="18" height="24" rx="2" fill="rgba(255,80,80,0.15)" stroke="rgba(255,80,80,0.4)"/>
+            <rect x="44" y="20" width="18" height="24" rx="2" fill="rgba(255,80,80,0.15)" stroke="rgba(255,80,80,0.4)"/>
+            <rect x="20" y="50" width="18" height="24" rx="2" fill="rgba(255,80,80,0.15)" stroke="rgba(255,80,80,0.4)"/>
+            <rect x="44" y="50" width="18" height="24" rx="2" fill="rgba(255,80,80,0.15)" stroke="rgba(255,80,80,0.4)"/>
+          </svg>
+        </div>
+      </div>
+      <div class="project-info">
+        <div class="project-tags">
+          <span class="project-tag">UI Clone</span>
+          <span class="project-tag">Responsive Design</span>
+        </div>
+        <h3>Game Library Storefront</h3>
+        <p>A responsive frontend clone of a popular game repository, featuring grid layouts, category filtering, and dark mode aesthetics.</p>
+        <a href="https://deva-here.github.io" target="_blank" class="project-link">
+          View Repository
+          <svg width="14" height="10" viewBox="0 0 14 10" fill="none">
+            <path d="M9 1L13 5L9 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <line x1="1" y1="5" x2="13" y2="5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Project 5: AI MCP Server -->
+    <div class="project-card">
+      <div class="project-thumb">
+        <div class="project-thumb-inner thumb-mcp">
+          <svg width="90" height="90" viewBox="0 0 120 120" fill="none" style="filter:drop-shadow(0 4px 24px rgba(0,161,155,0.4)); position:absolute; z-index:1;">
+            <rect x="15" y="28" width="90" height="64" rx="10" fill="rgba(0,161,155,0.12)" stroke="rgba(0,161,155,0.5)" stroke-width="1.5"/>
+            <circle cx="30" cy="42" r="5.5" fill="#00A19B" opacity="0.8"/>
+            <circle cx="44" cy="42" r="5.5" fill="#00C4BD" opacity="0.8"/>
+            <circle cx="58" cy="42" r="5.5" fill="rgba(255,255,255,0.15)"/>
+            <rect x="24" y="56" width="36" height="3.5" rx="1.75" fill="rgba(0,161,155,0.8)"/>
+            <rect x="24" y="66" width="55" height="3.5" rx="1.75" fill="rgba(255,255,255,0.2)"/>
+            <rect x="24" y="76" width="44" height="3.5" rx="1.75" fill="rgba(255,255,255,0.12)"/>
+            <rect x="24" y="56" width="5" height="3.5" rx="1.75" fill="#00A19B"/>
+          </svg>
+        </div>
+      </div>
+      <div class="project-info">
+        <div class="project-tags">
+          <span class="project-tag">Python</span>
+          <span class="project-tag">REST API</span>
+          <span class="project-tag">MCP</span>
+        </div>
+        <h3>AI-Powered Universal MCP Server</h3>
+        <p>Built a Python backend implementing the Model Context Protocol to route AI assistant commands to creative applications through a unified API layer.</p>
+        <a href="https://github.com/Deva-here" target="_blank" class="project-link">
+          View on GitHub
+          <svg width="14" height="10" viewBox="0 0 14 10" fill="none">
+            <path d="M9 1L13 5L9 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <line x1="1" y1="5" x2="13" y2="5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</div>
+</section>
+
+<!-- ========== EXPERIENCE ========== -->
+<section id="experience" class="exp-section">
+  <div class="exp-inner">
+    <p class="section-tag reveal">Experience</p>
+    <h2 class="reveal">Where I've <em>worked</em></h2>
+    <div class="exp-list">
+      <div class="exp-item reveal">
+        <div class="exp-period">Jun – Jul 2024</div>
+        <div class="exp-content">
+          <h4>Web Development Intern</h4>
+          <span>DLK Technologies · Chennai</span>
+        </div>
+        <div class="exp-badge">Internship</div>
+      </div>
+      <div class="exp-item reveal reveal-delay-1">
+        <div class="exp-period">2024 · 1 Month</div>
+        <div class="exp-content">
+          <h4>IT Intern</h4>
+          <span>Ashok Leyland Pvt. Ltd. · Ennore, Chennai</span>
+        </div>
+        <div class="exp-badge">Internship</div>
+      </div>
+      <div class="exp-item reveal reveal-delay-2">
+        <div class="exp-period">Jan 2023 – Dec 2027</div>
+        <div class="exp-content">
+          <h4>B.E. Computer Science & Engineering</h4>
+          <span>Vel Tech Rangarajan Sakunthala Engineering College · CGPA 8.39</span>
+        </div>
+        <div class="exp-badge">Education</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== ACHIEVEMENTS ========== -->
+<section class="achieve-section">
+  <p class="section-tag reveal">Recognition</p>
+  <h2 class="reveal">Awards & <em>achievements</em></h2>
+  <div class="achieve-grid">
+    <div class="achieve-card reveal">
+      <div class="achieve-icon">🏆</div>
+      <h4>Best Idea Award</h4>
+      <p>Intercollege Hackathon — recognised for innovative problem-solving and unique solution design.</p>
+    </div>
+    <div class="achieve-card reveal reveal-delay-1">
+      <div class="achieve-icon">⭐</div>
+      <h4>Best Project Award</h4>
+      <p>Innovative Excellent Award 2025 — outstanding project execution and technical implementation.</p>
+    </div>
+    <div class="achieve-card reveal reveal-delay-2">
+      <div class="achieve-icon">🎯</div>
+      <h4>Event Coordinator</h4>
+      <p>Department Symposium — managed operations for 100+ participants with smooth end-to-end event delivery.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== CONTACT ========== -->
+<section id="contact" class="contact-section">
+  <div class="contact-inner">
+    <p class="section-tag">Let's Connect</p>
+    <h2>Ready to build something <em>great?</em></h2>
+    <p>Open to freelance projects, internships, and full-time opportunities. Let's talk about what we can create together.</p>
+    <div class="contact-links">
+      <a href="mailto:devanand.10606@gmail.com" class="contact-link primary">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1" y="3" width="12" height="9" rx="1.5" stroke="white" stroke-width="1.4"/><path d="M1 4L7 8.5L13 4" stroke="white" stroke-width="1.4" stroke-linecap="round"/></svg>
+        Email Me
+      </a>
+      <a href="https://linkedin.com/in/devanand100606-v" target="_blank" class="contact-link secondary">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1" y="1" width="12" height="12" rx="2" stroke="currentColor" stroke-width="1.4"/><path d="M4 6v4M4 4.5v.01M7 10V7.5c0-.8.5-1.5 1.5-1.5S10 6.7 10 7.5V10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        LinkedIn
+      </a>
+      <a href="https://github.com/Deva-here" target="_blank" class="contact-link secondary">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1C3.686 1 1 3.686 1 7c0 2.654 1.72 4.9 4.107 5.693.3.055.41-.13.41-.29v-1.02c-1.668.362-2.018-.806-2.018-.806-.273-.693-.667--.877-.667-.877-.545-.373.041-.365.041-.365.603.042.92.619.92.619.536.918 1.405.653 1.748.5.054-.388.21-.653.381-.803-1.332-.152-2.732-.666-2.732-2.963 0-.654.234-1.19.618-1.608-.062-.15-.268-.76.058-1.586 0 0 .504-.161 1.65.615A5.754 5.754 0 017 4.978c.51.002 1.023.069 1.503.202 1.145-.776 1.648-.615 1.648-.615.327.826.121 1.436.06 1.586.384.418.617.954.617 1.608 0 2.304-1.403 2.81-2.74 2.958.216.186.407.551.407 1.11v1.645c0 .161.109.348.414.29C11.281 11.899 13 9.653 13 7c0-3.314-2.686-6-6-6z" fill="currentColor"/></svg>
+        GitHub
+      </a>
+      <a href="tel:+917358103610" class="contact-link secondary">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 1h2.5l1 3-1.5 1.5c.8 1.6 2 2.8 3.5 3.5L10 7.5l3 1V11a1 1 0 01-1 1C5.373 12 1 7.627 1 3a1 1 0 011-1z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
+        +91 73581-03610
+      </a>
+    </div>
+  </div>
+  <footer>
+    <a href="#" class="logo" style="color:rgba(255,255,255,0.5)">dev<span style="color:var(--accent)">.</span></a>
+    <p>© 2025 Devanand V · Chennai, India</p>
+  </footer>
+</section>
+
+<script>
+/* ---- CURSOR ---- */
+const cursor = document.getElementById('cursor');
+const ring   = document.getElementById('cursorRing');
+let rx = 0, ry = 0, cx = 0, cy = 0;
+document.addEventListener('mousemove', e => { cx = e.clientX; cy = e.clientY; cursor.style.left = cx+'px'; cursor.style.top = cy+'px'; });
+function animRing() { rx += (cx - rx) * 0.12; ry += (cy - ry) * 0.12; ring.style.left = rx+'px'; ring.style.top = ry+'px'; requestAnimationFrame(animRing); }
+animRing();
+
+/* ---- NAV SCROLL ---- */
+const nav = document.getElementById('mainNav');
+window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 60); });
+
+/* ---- ROTATING TITLE ---- */
+const titles = document.querySelectorAll('.title-item');
+const rotatingEl = document.getElementById('rotatingTitle');
+let currentTitle = 0;
+function nextTitle() {
+  titles[currentTitle].classList.remove('active');
+  currentTitle = (currentTitle + 1) % titles.length;
+  titles[currentTitle].classList.add('active');
+  rotatingEl.style.transform = `translateY(-${currentTitle * 56}px)`;
+}
+setInterval(nextTitle, 2600);
+
+/* ---- HERO SCROLL + MOUSE PARALLAX ---- */
+const heroWrapper = document.getElementById('heroWrapper');
+const cardsLayer  = document.getElementById('cardsLayer');
+const cards       = document.querySelectorAll('.card');
+const scrollHint  = document.getElementById('scrollHint');
+const heroCenter  = document.getElementById('heroCenter');
+
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+const cardData = Array.from(cards).map(c => ({
+  el: c,
+  depth:  parseFloat(c.dataset.depth || 1),
+  initX:  parseFloat(c.dataset.x || 0),
+  initY:  parseFloat(c.dataset.y || 0),
+  rotZ:   parseFloat(c.dataset.rz || 0)
+}));
+
+let mouseX = 0, mouseY = 0, smx = 0, smy = 0;
+document.addEventListener('mousemove', e => {
+  mouseX = (e.clientX / window.innerWidth  - 0.5) * 2;
+  mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
+});
+
+function lerp(a, b, t) { return a + (b - a) * t; }
+
+function heroAnim() {
+  if (prefersReducedMotion) return; // Halt animation loop if accessibility flag is true
+
+  smx = lerp(smx, mouseX, 0.05);
+  smy = lerp(smy, mouseY, 0.05);
+
+  const rect     = heroWrapper.getBoundingClientRect();
+  const scrolled = -rect.top;
+  const total    = heroWrapper.offsetHeight - window.innerHeight;
+  const prog     = Math.max(0, Math.min(1, scrolled / total));
+
+  cardData.forEach(({ el, depth, initX, initY, rotZ }) => {
+    const px = smx * depth * 5;
+    const py = smy * depth * 5;
+    
+    // 1. Z-axis: Start deep in background, pull forward on scroll
+    const z  = lerp(-1200 * depth, 150 * depth, Math.pow(prog, 0.6));
+    
+    // 2. X/Y-axis: Start slightly dispersed, pull into tight layout cluster
+    const x  = lerp(initX * 1.6, initX, Math.pow(prog, 0.5)) + px;
+    const y  = lerp(initY * 1.6, initY, Math.pow(prog, 0.5)) + py;
+    
+    // 3. Cinematic Rotations: Angle based on origin quadrant, flattens out to 0 at the end
+    const rX = lerp(initY * 0.4, 0, prog); 
+    const rY = lerp(-initX * 0.4, 0, prog); 
+    const rZ = lerp(rotZ * 1.5, rotZ, prog);
+    
+    // 4. Scale & Opacity
+    const sc = lerp(0.6 + depth * 0.1, 1.0, Math.pow(prog, 0.55));
+    const op = Math.min(1, prog * 4.0); // Fades in quickly
+
+    // Combine transforms: Translate to center, apply world coordinates, then rotate locally
+    el.style.transform = `translate(-50%, -50%) translate3d(${x}vw, ${y}vh, ${z}px) rotateX(${rX}deg) rotateY(${rY}deg) rotateZ(${rZ}deg) scale(${sc})`;
+    el.style.opacity   = op;
+    el.style.boxShadow = `0 ${lerp(8,40,prog)*0.4}px ${lerp(20,80,prog)}px rgba(0,0,0,${lerp(0.05,0.2,prog)})`;
+  });
+
+  scrollHint.style.opacity = Math.max(0, 1 - scrolled / 110);
+  
+  // Keep the center text fully visible and static
+  heroCenter.style.opacity = 1;
+  heroCenter.style.transform = `translate(-50%,-50%)`;
+
+  requestAnimationFrame(heroAnim);
+}
+
+cardData.forEach(({ el }) => { el.style.opacity = '0'; });
+// Set initial opacity to 1 so the text is visible immediately
+heroCenter.style.opacity = '1';
+heroAnim();
+
+/* ---- SCROLL REVEAL ---- */
+const revealEls = document.querySelectorAll('.reveal');
+const observer  = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.12 });
+revealEls.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
