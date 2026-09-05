@@ -1,38 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script>
+        (function () {
+            try {
+                var t = localStorage.getItem('theme');
+                if (t !== 'light') document.documentElement.dataset.theme = 'dark';
+            } catch (e) {}
+        })();
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Devanand V | Full Stack Web Developer | Java, Python, React Portfolio</title>
-    <meta name="description" content="Devanand V — Full Stack Web Developer specializing in Java, Python, Spring Boot, React, and modern web applications. Available for freelance projects and web development internships in Chennai.">
-    <meta name="keywords" content="Devanand V, Full Stack Developer, Web Developer, Java Developer, Python Developer, React Developer, Chennai, Portfolio, Spring Boot, Flask">
-    <meta name="author" content="Devanand V">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://www.devanand.dev">
-    <meta property="og:title" content="Devanand V | Full Stack Web Developer — Java, Python, React">
-    <meta property="og:description" content="Portfolio of Devanand V, a driven Full Stack Developer building modern web apps with Java, Python, React, and Spring Boot.">
-    <meta property="og:image" content="https://placehold.co/1200x630/03256C/FFFFFF?text=Devanand+V+Portfolio">
-    <meta property="og:url" content="https://www.devanand.dev">
+    <title>Deva | Web Developer &amp; Software Engineer | Freelance Full Stack Developer Chennai</title>
+    <meta name="description" content="Deva is a freelance Web Developer &amp; Software Engineer based in Chennai. Full Stack Developer building fast, responsive web apps with Java, Python, React, Spring Boot &amp; Flask. Open to freelance projects and internships — hire Devanand for your next product.">
+    <meta name="keywords" content="Deva, Devanand V, Deva web developer, web developer, software engineer, freelance web developer, freelance developer Chennai, full stack developer, full stack developer Chennai, Java developer, Python developer, React developer, hire web developer, freelance software engineer, Chennai web developer">
+    <meta name="author" content="Deva (Devanand V)">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://www.devanand.dev/">
+    <meta name="geo.region" content="IN-TN">
+    <meta name="geo.placename" content="Chennai">
+    <meta name="geo.position" content="13.0827;80.2707">
+    <meta property="og:image:alt" content="Deva — full stack web developer and software engineer">
+    <meta name="theme-color" content="#06080f">
+    <meta property="og:title" content="Deva | Web Developer &amp; Software Engineer">
+    <meta property="og:description" content="Freelance Full Stack Web Developer in Chennai — Java, Python, React, Spring Boot &amp; Flask. Available for freelance projects &amp; internships.">
+    <meta property="og:image" content="https://www.devanand.dev/assets/images/Hero_image_1.webp">
+    <meta property="og:url" content="https://www.devanand.dev/">
     <meta property="og:type" content="website">
-    <meta property="og:site_name" content="Devanand V Portfolio">
+    <meta property="og:locale" content="en_IN">
+    <meta property="og:site_name" content="Deva — Full Stack Web Developer">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Devanand V | Full Stack Web Developer">
-    <meta name="twitter:description" content="Building modern web apps with Java, Python, React & Spring Boot.">
+    <meta name="twitter:title" content="Deva | Web Developer &amp; Software Engineer">
+    <meta name="twitter:description" content="Freelance Full Stack Web Developer in Chennai — Java, Python, React, Spring Boot &amp; Flask. Open to freelance work &amp; internships.">
+    <meta name="twitter:image" content="https://www.devanand.dev/assets/images/Hero_image_1.webp">
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@type": "Person",
-        "name": "Devanand V",
-        "url": "https://www.devanand.dev",
-        "email": "devanand.10606@gmail.com",
+        "name": "Deva",
+        "alternateName": ["Devanand V", "Deva Devanand", "Deva-here"],
+        "url": "https://www.devanand.dev/",
+        "image": "https://www.devanand.dev/assets/images/Hero_image_1.webp",
+        "email": "mailto:devanand.10606@gmail.com",
         "telephone": "+917358103610",
-        "jobTitle": "Full Stack Developer",
-        "knowsAbout": ["Java", "Python", "JavaScript", "React", "Spring Boot", "Flask", "HTML5", "CSS3", "MySQL", "Git", "REST API"],
-        "alumniOf": "Vel Tech University, Chennai",
+        "jobTitle": ["Web Developer", "Software Engineer", "Freelance Full Stack Developer"],
+        "description": "Freelance full stack web developer and software engineer based in Chennai, India, building modern web applications with Java, Python, React, Spring Boot and Flask.",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Chennai",
+            "addressRegion": "Tamil Nadu",
+            "addressCountry": "IN"
+        },
+        "knowsAbout": ["Web Development", "Software Engineering", "Java", "Python", "JavaScript", "React", "Spring Boot", "Flask", "REST APIs", "MySQL", "MongoDB", "HTML5", "CSS3", "Tailwind CSS", "Git", "Freelancing"],
+        "alumniOf": {
+            "@type": "CollegeOrUniversity",
+            "name": "Vel Tech University",
+            "address": { "@type": "PostalAddress", "addressLocality": "Chennai", "addressCountry": "IN" }
+        },
         "sameAs": [
             "https://github.com/Deva-here",
             "https://www.linkedin.com/in/devanand-v-160a39258"
         ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Deva — Full Stack Web Developer",
+        "alternateName": "Deva Portfolio",
+        "url": "https://www.devanand.dev/",
+        "description": "Portfolio of Deva, a freelance web developer and software engineer in Chennai specializing in Java, Python, React and modern full stack web applications.",
+        "inLanguage": "en-IN",
+        "author": {
+            "@type": "Person",
+            "name": "Deva",
+            "url": "https://www.devanand.dev/"
+        }
     }
     </script>
     <script src="https://cdn.tailwindcss.com"></script>
@@ -64,6 +108,10 @@
                 <a href="https://drive.google.com/file/d/1lGnrFft1Yml1H_g4xQm6bR4HxYpEHjMi/view" target="_blank" rel="noopener noreferrer">Resume</a>
                 <a href="#contact">Contact</a>
             </div>
+            <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode">
+                <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+            </button>
             <a href="mailto:devanand.10606@gmail.com" class="btn btn-outline nav-cta"><span class="btn-label">Let's Talk</span><span class="btn-bg"></span></a>
             <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
                 <span></span><span></span><span></span>
@@ -84,8 +132,8 @@
                 <div class="eyebrow">Available for freelance &amp; internships — Chennai, IN</div>
                 <h1>
                     <span class="hero-block">
-                        <span class="line1">I BUILD</span><br/>
-                        <span class="line2">THINGS THAT <span class="cycle-wrap"><span class="cycle" id="cycleWord">WORK</span></span></span>
+                        <span class="line1">DEVANAND</span><br/>
+                        <span class="line2"><span class="cycle-wrap"><span class="cycle" id="cycleWord">FULLSTACK</span></span></span>
                     </span>
                 </h1>
                 <p class="lead">Full Stack Web Developer delivering clean, performant web solutions with Java, Python, and modern JavaScript. From RESTful APIs to pixel-perfect interfaces — I turn requirements into reality.</p>
@@ -98,47 +146,11 @@
                 <div class="blob-wrap">
                     <div class="blob"></div>
                 </div>
-                <div class="float-shape"></div>
-                <div class="float-shape"></div>
-                <div class="float-shape"></div>
-                <div class="float-shape"></div>
-                <div class="float-shape"></div>
-
-                <div class="terminal terminal-1" id="term1">
-                    <div class="terminal-head">
-                        <span class="terminal-dot"></span>
-                        <span class="terminal-dot"></span>
-                        <span class="terminal-dot"></span>
-                        <span class="terminal-title">bash — devanand.dev</span>
-                    </div>
-                    <div class="terminal-body" id="termBody1">
-                        <div class="term-line" data-delay="0">$ <span class="cyan">npm</span> run dev</div>
-                        <div class="term-line green" data-delay="1">  ✓ ready on http://localhost:5173</div>
-                        <div class="term-line dim" data-delay="2">  ⎯  Linting 3 files  (100ms)</div>
-                        <div class="term-line" data-delay="3">  ⎯  <span class="yellow">3</span> modules transformed</div>
-                        <div class="term-line green" data-delay="4">  ✓ build completed in 1.2s</div>
-                        <div class="term-line" data-delay="5">$ <span class="cyan">git</span> push origin main</div>
-                        <div class="term-line green" data-delay="6">  ✓ main → main (up-to-date)</div>
-                        <div class="term-line cursor-blink" data-delay="7">$ <span class="dim">— waiting for changes —</span></div>
-                    </div>
-                </div>
-
-                <div class="terminal terminal-2" id="term2">
-                    <div class="terminal-head">
-                        <span class="terminal-dot"></span>
-                        <span class="terminal-dot"></span>
-                        <span class="terminal-dot"></span>
-                        <span class="terminal-title">deploy — vercel</span>
-                    </div>
-                    <div class="terminal-body" id="termBody2">
-                        <div class="term-line" data-delay="0">Vercel CLI 41.4.0</div>
-                        <div class="term-line dim" data-delay="1">  🔍 Inspecting project...</div>
-                        <div class="term-line green" data-delay="2">  ✓ Linked to devanand-dev</div>
-                        <div class="term-line" data-delay="3">  ⎯  <span class="yellow">4</span> source files</div>
-                        <div class="term-line green" data-delay="4">  ✓ Deployed to production</div>
-                        <div class="term-line cyan" data-delay="5">  https://www.devanand.dev</div>
-                        <div class="term-line cursor-blink dim" data-delay="6">$ deployment_active</div>
-                    </div>
+                <div class="hero-photo" id="heroPhoto">
+                    <picture>
+                        <source srcset="./assets/images/Hero_image_1.webp" type="image/webp">
+                        <img src="./assets/images/Hero_image_1.png" alt="Devanand V — Full Stack Web Developer" fetchpriority="high" />
+                    </picture>
                 </div>
             </div>
         </div>
@@ -153,7 +165,7 @@
                 </p>
             </div>
             <div class="horizontal-slide-content">
-                <h2 class="font-hero text-6xl md:text-8xl text-[var(--bg-color)] mb-6 tracking-wide uppercase">Technical <br> Arsenal</h2>
+                <h2 class="font-hero text-6xl md:text-8xl text-[var(--on-dark)] mb-6 tracking-wide uppercase">Technical <br> Arsenal</h2>
                 <div class="grid grid-cols-2 gap-8 max-w-2xl text-lg text-white/80">
                     <div><h4 class="text-[var(--secondary)] font-bold mb-2 uppercase">Languages</h4><p>Java, Python, JavaScript, HTML5, CSS3</p></div>
                     <div><h4 class="text-[var(--secondary)] font-bold mb-2 uppercase">Frameworks</h4><p>Spring Boot, Flask, React, Tailwind, Bootstrap</p></div>
@@ -162,7 +174,7 @@
                 </div>
             </div>
             <div class="horizontal-slide-content relative">
-                <h2 class="font-hero text-6xl md:text-8xl text-[var(--bg-color)] mb-6 tracking-wide uppercase relative z-10">Experience</h2>
+                <h2 class="font-hero text-6xl md:text-8xl text-[var(--on-dark)] mb-6 tracking-wide uppercase relative z-10">Experience</h2>
                 <div class="space-y-6 max-w-3xl relative z-10">
                     <div class="exp-item border-l-4 border-[var(--secondary)] pl-6">
                         <h3 class="text-2xl font-bold">Web Development Intern</h3>
@@ -202,7 +214,7 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-stretch">
 
-                <article class="brutal-card card-tilt p-6 md:p-8 flex flex-col h-full bg-white relative overflow-hidden group md:col-span-2">
+                <article class="brutal-card card-tilt p-6 md:p-8 flex flex-col h-full bg-[var(--card-bg)] relative overflow-hidden group md:col-span-2">
                     <div class="card-tilt-inner md:grid md:grid-cols-2 md:gap-8 items-center">
                         <div class="w-full aspect-video border-2 border-[var(--text-main)] mb-6 md:mb-0 overflow-hidden bg-gradient-to-br from-[#0d1117] to-[#1a2235] relative flex items-center justify-center">
                             <div class="text-center p-6">
@@ -229,7 +241,7 @@
                     </div>
                 </article>
 
-                <article class="brutal-card card-tilt p-6 md:p-8 flex flex-col h-full bg-white relative overflow-hidden group">
+                <article class="brutal-card card-tilt p-6 md:p-8 flex flex-col h-full bg-[var(--card-bg)] relative overflow-hidden group">
                     <div class="card-tilt-inner">
                         <div class="w-full aspect-video border-2 border-[var(--text-main)] mb-6 overflow-hidden bg-[var(--bg-color-alt)] relative">
                             <img src="./assets/images/cybersentinel.png" onerror="this.src='https://placehold.co/600x400/2541B2/FFFFFF?text=CyberSentinel'" alt="CyberSentinel technical symposium portal built with HTML CSS JavaScript" loading="lazy" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500" />
@@ -243,7 +255,7 @@
                     </div>
                 </article>
 
-                <article class="brutal-card card-tilt p-6 md:p-8 flex flex-col h-full bg-white relative overflow-hidden group">
+                <article class="brutal-card card-tilt p-6 md:p-8 flex flex-col h-full bg-[var(--card-bg)] relative overflow-hidden group">
                     <div class="card-tilt-inner">
                         <div class="w-full aspect-video border-2 border-[var(--text-main)] mb-6 overflow-hidden bg-[var(--bg-color-alt)] relative">
                             <img src="./assets/images/brownie-cult.png" onerror="this.src='https://placehold.co/600x400/03256C/FFFFFF?text=Brownie+Cult'" alt="Brownie Cult bakery brand web app UI/UX design" loading="lazy" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500" />
@@ -257,7 +269,7 @@
                     </div>
                 </article>
 
-                <article class="brutal-card card-tilt p-6 md:p-8 flex flex-col h-full bg-white relative overflow-hidden group">
+                <article class="brutal-card card-tilt p-6 md:p-8 flex flex-col h-full bg-[var(--card-bg)] relative overflow-hidden group">
                     <div class="card-tilt-inner">
                         <div class="w-full aspect-video border-2 border-[var(--text-main)] mb-6 overflow-hidden bg-[var(--bg-color-alt)] relative">
                             <img src="./assets/images/steamunlocked-frontend.png" onerror="this.src='https://placehold.co/600x400/2541B2/FFFFFF?text=SteamUnlocked+UI'" alt="SteamUnlocked frontend redesign and UI clone project" loading="lazy" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500" />
@@ -271,7 +283,7 @@
                     </div>
                 </article>
 
-                <article class="brutal-card card-tilt p-6 md:p-8 flex flex-col h-full bg-white relative overflow-hidden group">
+                <article class="brutal-card card-tilt p-6 md:p-8 flex flex-col h-full bg-[var(--card-bg)] relative overflow-hidden group">
                     <div class="card-tilt-inner">
                         <div class="w-full aspect-video border-2 border-[var(--text-main)] mb-6 overflow-hidden bg-[var(--bg-color-alt)] relative">
                             <img src="./assets/images/shades-landing-page.png" onerror="this.src='https://placehold.co/600x400/03256C/FFFFFF?text=Shades+Landing'" alt="Shades promotional landing page with CSS animations" loading="lazy" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500" />
@@ -296,17 +308,17 @@
                 <p class="text-[var(--text-muted)] max-w-2xl mx-auto text-lg font-medium split-sub">Recognition and milestones from hackathons, academics, and beyond.</p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="brutal-card p-8 bg-white">
+                <div class="brutal-card p-8 bg-[var(--card-bg)]">
                     <div class="w-14 h-14 rounded-xl flex items-center justify-center text-2xl mb-5" style="background:rgba(37,65,178,0.1)">🏆</div>
                     <h4 class="text-2xl font-bold mb-3 text-[var(--text-main)]">Best Project Award</h4>
                     <p class="text-[var(--text-muted)] font-medium leading-relaxed">Awarded <strong>Best Project</strong> among 35+ teams at Synergy Hackathon 2k25 for the AI-Powered MCP Server prototype.</p>
                 </div>
-                <div class="brutal-card p-8 bg-white">
+                <div class="brutal-card p-8 bg-[var(--card-bg)]">
                     <div class="w-14 h-14 rounded-xl flex items-center justify-center text-2xl mb-5" style="background:rgba(37,65,178,0.1)">💡</div>
                     <h4 class="text-2xl font-bold mb-3 text-[var(--text-main)]">Best Idea Award</h4>
                     <p class="text-[var(--text-muted)] font-medium leading-relaxed">Awarded <strong>Best Idea</strong> at Synergy Hackathon 2k25 for an innovative full-stack prototype addressing real-world challenges.</p>
                 </div>
-                <div class="brutal-card p-8 bg-white">
+                <div class="brutal-card p-8 bg-[var(--card-bg)]">
                     <div class="w-14 h-14 rounded-xl flex items-center justify-center text-2xl mb-5" style="background:rgba(37,65,178,0.1)">📚</div>
                     <h4 class="text-2xl font-bold mb-3 text-[var(--text-main)]">Academic Excellence</h4>
                     <p class="text-[var(--text-muted)] font-medium leading-relaxed">Maintaining a CGPA of <strong>8.39</strong> at Vel Tech University with strong fundamentals in Computer Science.</p>
@@ -315,7 +327,7 @@
         </div>
     </section>
 
-    <footer id="contact" class="bg-[var(--text-main)] text-[var(--bg-color)] pt-20 pb-10 px-6 relative overflow-hidden">
+    <footer id="contact" class="bg-[var(--section-dark)] text-[var(--on-dark)] pt-20 pb-10 px-6 relative overflow-hidden">
         <div class="container mx-auto max-w-6xl relative z-10">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
                 <div>
@@ -355,10 +367,10 @@
                         </div>
                     </div>
                     <div class="flex items-center gap-5">
-                        <a href="https://github.com/Deva-here" target="_blank" rel="noopener noreferrer" class="text-white/40 hover:text-white transition-colors" aria-label="GitHub">
+                        <a href="https://github.com/Deva-here" target="_blank" rel="me noopener noreferrer" class="text-white/40 hover:text-white transition-colors" aria-label="GitHub">
                             <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
                         </a>
-                        <a href="https://www.linkedin.com/in/devanand100606-v/" target="_blank" rel="noopener noreferrer" class="text-white/40 hover:text-white transition-colors" aria-label="LinkedIn">
+                        <a href="https://www.linkedin.com/in/devanand100606-v/" target="_blank" rel="me noopener noreferrer" class="text-white/40 hover:text-white transition-colors" aria-label="LinkedIn">
                             <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
                         </a>
                         <span class="text-white/20">|</span>

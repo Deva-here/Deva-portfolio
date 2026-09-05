@@ -27,7 +27,16 @@ window.addEventListener("load", () => {
         });
     }
 
-    const words = ['WORK', 'SCALE', 'SHIP', 'LAST'];
+    const themeToggle = document.getElementById('themeToggle');
+    if (themeToggle) {
+        themeToggle.addEventListener('click', () => {
+            const isDark = document.documentElement.dataset.theme === 'dark';
+            document.documentElement.dataset.theme = isDark ? 'light' : 'dark';
+            try { localStorage.setItem('theme', isDark ? 'light' : 'dark'); } catch (e) {}
+        });
+    }
+
+    const words = ['FULLSTACK', 'WEB DEV'];
     let wi = 0;
     const cycleEl = document.getElementById('cycleWord');
     if(cycleEl) {
@@ -41,14 +50,12 @@ window.addEventListener("load", () => {
         }, 2400);
     }
 
-    document.querySelectorAll('.term-line').forEach(line => {
-        const delay = parseFloat(line.dataset.delay) || 0;
-        gsap.set(line, { opacity: 0, y: 6 });
-        gsap.to(line, {
-            opacity: 1, y: 0, duration: 0.35, delay: delay * 0.6, ease: 'power2.out',
-            scrollTrigger: { trigger: '.hero-visual', start: 'top 80%', toggleActions: 'play none none none' }
+    const heroPhotoEl = document.querySelector('#heroPhoto picture');
+    if (heroPhotoEl) {
+        gsap.fromTo(heroPhotoEl, { opacity: 0, scale: 0.85, y: 30 }, {
+            opacity: 1, scale: 1, y: 0, duration: 1, delay: 0.3, ease: 'power3.out'
         });
-    });
+    }
 
     const heroBlock = document.querySelector('.hero-block');
     if (heroBlock) {
